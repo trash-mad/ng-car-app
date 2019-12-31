@@ -1,0 +1,21 @@
+{
+  "settings": {
+    "css.remoteStyleSheets": [
+      "node_modules/bootstrap/dist/css/bootstrap-reboot.css",
+      "node_modules/bootstrap/dist/css/bootstrap-grid.css",
+      "node_modules/bootstrap/dist/css/bootstrap.css",
+    ],
+  },
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "extensions": {
+    "recommendations": [
+      "Angular.ng-template",
+      "ecmel.vscode-html-css",
+      "dannymcgee.ng-html"
+    ]
+  }
+}

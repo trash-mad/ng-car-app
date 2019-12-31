@@ -1,0 +1,8 @@
+<app-nav></app-nav>
+
+<div class="container">
+  <app-cars-form></app-cars-form>
+  <div class="list-group">
+    <app-car *ngFor="let car of cars" [car]="car"></app-car>
+  </div>
+</div>

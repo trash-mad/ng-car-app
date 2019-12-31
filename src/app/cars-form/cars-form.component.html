@@ -1,0 +1,53 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+  <div class="form-group card mb-2">
+    <div class="card-body">
+
+      <h5 class="card-title mb-2">Create car</h5>
+
+      <div class="input-group mb-1">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Title:</span>
+        </div>
+        <input type="text"
+          [ngClass]="{'border-danger': form.get('title').invalid && form.get('title').touched, 'text-danger': form.get('title').invalid && form.get('title').touched}"
+          class="form-control" formControlName="title">
+      </div>
+
+      <small *ngIf="form.get('title').invalid && form.get('title').touched" style="color: red;" class="d-block mb-2">
+        Car name shorter than 5 characters
+      </small>
+
+      <div class="input-group mb-1">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Model:</span>
+        </div>
+        <select class="form-control" formControlName="model" data-live-search="true"
+          [ngClass]="{'border-danger': form.get('model').invalid && form.get('model').touched, 'text-danger': form.get('model').invalid && form.get('model').touched}"
+          data-style="bg-white border">
+          <option value="" selected disabled>Please select</option>
+          <option *ngFor="let car of avalibleCars;" value={{car}}>{{car}}</option>
+        </select>
+      </div>
+
+      <small *ngIf="form.get('model').invalid && form.get('model').touched" style="color: red;" class="d-block mb-2">
+        Model not specified
+      </small>
+
+      <textarea (click)="applyTempDate()" type="text" class="form-control mb-1" formControlName="description"
+        [ngClass]="{'border-danger': form.get('description').invalid && form.get('description').touched, 'text-danger': form.get('description').invalid && form.get('description').touched}"
+        placeholder="Description"></textarea>
+
+      <small *ngIf="form.get('description').invalid && form.get('description').touched" style="color: red;" class="d-block mb-2">
+        Description shorter than 25 characters
+      </small>
+
+      <div class="d-flex flex-row-reverse flex-nowrap w-100">
+        <div class="d-flex justify-content-between full-width-on-mobile">
+          <button class="btn btn-secondary mr-1">Load cars</button>
+          <button type="submit" [disabled]="!form.valid || form.pending" class="btn btn-primary">Save car</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>

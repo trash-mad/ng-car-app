@@ -1,0 +1,20 @@
+.input-group-text {
+  min-width: 75px;
+}
+
+.full-width-on-mobile {
+  width: auto;
+}
+
+@media (max-width:480px)  { 
+  .full-width-on-mobile {
+    width: 100% !important;
+  }
+  .full-width-on-mobile > * {
+    flex-grow: 1;
+  }
+}
+
+div.ng-untouched.ng-invalid {
+  color: red;
+}

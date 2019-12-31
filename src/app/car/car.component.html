@@ -1,0 +1,19 @@
+<li class="card list-group-item mb-1">
+
+  <div class="d-flex w-100 justify-content-between mb-1">
+
+    <div class="d-flex flex-column">
+      <h5>{{ car.title }}</h5>
+      <small>{{ car.model }}</small>
+    </div>
+
+    <small>{{ car.date | date:'shortDate' }}</small>
+
+  </div>
+
+  <div class="mb-1">
+    <p>{{car.description}}</p>
+  </div>
+
+  <a href="#" class="card-link text-danger">Delete</a>
+</li>

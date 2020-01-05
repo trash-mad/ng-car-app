@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
-import { IHoldCars, Car } from './_models/car.model';
-import { CarModel } from './_enums/CarModel';
+import { Car } from '../_models/car.model';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements IHoldCars {
-  public cars: Car[] = [
-    new Car('CyberTruck', CarModel.Tesla, 'lorem ipsumdscdsv', new Date()),
-    new Car('CyberTruc2', CarModel.Tesla, 'lorem ipsumsdsfsf', new Date()),
-    new Car('CyberTruc3', CarModel.Tesla, 'lorem ipsumdsfdsf', new Date()),
-  ];
+export class AppComponent {
+  public cars: Car[] = [];
+  constructor() {}
+  onAdd(car: Car) {
+    this.cars.push(car);
+  }
+  onDelete(car: Car) {
+    this.cars = this.cars.filter((c) => c.id !== car.id);
+  }
 }

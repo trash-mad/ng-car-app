@@ -1,8 +1,8 @@
-import { Component, ViewChild, ElementRef, Renderer2, OnInit, AfterViewInit } from '@angular/core';
+import { Component, EventEmitter, Renderer2, Output } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { CarModel } from '../_enums/CarModel';
 
 import * as faker from 'faker';
+import { Car, CarModel } from '../../_models/car.model';
 
 @Component({
   selector: 'app-cars-form',
@@ -10,6 +10,9 @@ import * as faker from 'faker';
   styleUrls: ['./cars-form.component.scss']
 })
 export class CarsFormComponent {
+
+  @Output()
+  carAdded = new EventEmitter<Car>();
 
   avalibleCars: string[] = [];
   form: FormGroup;
@@ -22,10 +25,9 @@ export class CarsFormComponent {
       });
     this.form = new FormGroup({
       title: new FormControl('', [
-          Validators.required,
-          Validators.minLength(5)
-        ]
-      ),
+        Validators.required,
+        Validators.minLength(5)
+      ]),
       model: new FormControl('', [
         Validators.required,
         Validators.minLength(3)
@@ -39,11 +41,13 @@ export class CarsFormComponent {
 
   applyTempDate() {
     this.form.patchValue({
-      description: faker.lorem.words(25),
+      description: faker.lorem.words(25)
     });
   }
 
   submit() {
-    console.log('submit')
+    const { title, model, description } = this.form.value;
+    this.carAdded.emit(new Car(title, model, description, new Date()));
+    this.form.reset();
   }
 }

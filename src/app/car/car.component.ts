@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { Car } from '../_models/car.model';
+import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Car } from '../../_models/car.model';
 
 @Component({
   selector: 'app-car',
@@ -8,4 +8,8 @@ import { Car } from '../_models/car.model';
 })
 export class CarComponent {
   @Input() car: Car;
+  @Output() delete = new EventEmitter<Car>();
+  onDelete() {
+    this.delete.emit(this.car);
+  }
 }

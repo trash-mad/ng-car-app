@@ -9,6 +9,7 @@
           <span class="input-group-text">Title:</span>
         </div>
         <input type="text"
+          placeholder="CyberTruck"
           [ngClass]="{'border-danger': form.get('title').invalid && form.get('title').touched, 'text-danger': form.get('title').invalid && form.get('title').touched}"
           class="form-control" formControlName="title">
       </div>
@@ -23,7 +24,7 @@
         </div>
         <select class="form-control" formControlName="model" data-live-search="true"
           [ngClass]="{'border-danger': form.get('model').invalid && form.get('model').touched, 'text-danger': form.get('model').invalid && form.get('model').touched}"
-          data-style="bg-white border">
+          style="border-top-left-radius: 0px; border-bottom-left-radius: 0px;">
           <option value="" selected disabled>Please select</option>
           <option *ngFor="let car of avalibleCars;" value={{car}}>{{car}}</option>
         </select>
@@ -43,7 +44,7 @@
 
       <div class="d-flex flex-row-reverse flex-nowrap w-100">
         <div class="d-flex justify-content-between full-width-on-mobile">
-          <button class="btn btn-secondary mr-1">Load cars</button>
+          <button type="button" class="btn btn-secondary mr-1" (click)="form.reset()">Clear input</button>
           <button type="submit" [disabled]="!form.valid || form.pending" class="btn btn-primary">Save car</button>
         </div>
       </div>
